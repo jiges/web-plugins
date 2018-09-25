@@ -8,7 +8,7 @@ public class HttpClient {
 
     public static void main(String[] args) throws IOException {
         Socket socket = new Socket();
-        socket.connect(new InetSocketAddress("127.0.0.1",8080));
+        socket.connect(new InetSocketAddress("192.168.2.127",8080));
 
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         writer.write("POST  HTTP/1.1");
@@ -27,10 +27,21 @@ public class HttpClient {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         String line;
+        new Thread(() -> {
+            try {
+                Thread.sleep(5000);
+                System.out.println("closing socket");
+                socket.close();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
         while ((line = reader.readLine()) != null) {
             System.out.println(line);
         }
 
-        socket.close();
+
     }
 }

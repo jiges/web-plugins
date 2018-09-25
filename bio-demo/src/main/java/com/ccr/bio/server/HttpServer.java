@@ -45,10 +45,14 @@ public class HttpServer {
                         writer.newLine();
                         writer.newLine();
                         writer.flush();
+                        while (true) {
+                            System.out.println(reader.readLine());
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }finally {
                         try {
+                            System.out.println("close socket...");
                             socket.close();
                         } catch (IOException e) {
                             e.printStackTrace();
