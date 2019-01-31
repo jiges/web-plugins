@@ -3,18 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>web-plugins</artifactId>
+        <artifactId>plugin-websocket</artifactId>
         <groupId>com.ccr</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>plugin-websocket</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>websocket-server</module>
-        <module>handler-mapping</module>
-    </modules>
+    <artifactId>handler-mapping</artifactId>
 
 
 </project>

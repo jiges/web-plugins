@@ -27,7 +27,7 @@ public class ServerBootStrap {
                     .handler(new LoggingHandler())
                     .childHandler(null);
 
-            ChannelFuture future = bootStrap.bind(25330).sync();
+            ChannelFuture future = bootStrap.bind(20684).sync();
             future.channel().closeFuture().sync();
         } finally {
             boss.shutdownGracefully();

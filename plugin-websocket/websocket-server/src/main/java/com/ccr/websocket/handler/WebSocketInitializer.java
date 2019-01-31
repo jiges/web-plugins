@@ -7,10 +7,14 @@ import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.logging.LoggingHandler;
 
+
 /**
  * @author ccr12312@163.com at 2019-1-25
  */
 public class WebSocketInitializer extends ChannelInitializer {
+
+    private static final String WEBSOCKET_PATH = "/ws";
+
     @Override
     protected void initChannel(Channel ch) throws Exception {
         ch.pipeline().addFirst(new LoggingHandler());
@@ -20,6 +24,6 @@ public class WebSocketInitializer extends ChannelInitializer {
         //服务端愿意接受，客户端再发送请求体，否则客户端将接收到417的响应
         ch.pipeline().addLast(new HttpObjectAggregator(2 * 1024 * 1024));
         //协议升级，Http协议升级为WebSocket协议
-        ch.pipeline().addLast(new WebSocketServerProtocolHandler("/ws"));
+        ch.pipeline().addLast(new WebSocketServerProtocolHandler(WEBSOCKET_PATH));
     }
 }
